@@ -74,6 +74,9 @@
 ;; Blink cursor
 (blink-cursor-mode t)
 
+;; Indicate buffer boundaries
+(setq indicate-buffer-boundaries 'right)
+
 ;; Display time and date
 (setq display-time-24hr-format t)
 (setq display-time-day-and-date t)
