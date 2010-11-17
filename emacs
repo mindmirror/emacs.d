@@ -196,8 +196,10 @@
 (setq frame-title-format '("" "[%b@%f] - Emacs " emacs-version))
 
 ;; Color theme
-;;(require 'color-theme)
+(add-to-list 'load-path "~/.emacs.d/site-lisp/color-theme/")
+(require 'color-theme)
 ;;(color-theme-initialize)
+;;(color-theme-tangotango)
 
 ;; Set default frame
 (setq default-frame-alist
