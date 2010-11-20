@@ -12,7 +12,7 @@
 ;; ============================================================
 
 ;; Set default directory
-(if (eq system-type 'windows)
+(if (eq system-type 'windows-nt)
     (setq default-directory "C:/"))
 
 ;; Mute the error tip sound
