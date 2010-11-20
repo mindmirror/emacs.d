@@ -75,7 +75,7 @@
 (blink-cursor-mode t)
 
 ;; Indicate buffer boundaries
-(setq indicate-buffer-boundaries 'right)
+(setq default-indicate-buffer-boundaries 'left)
 
 ;; Display time and date
 (setq display-time-24hr-format t)
@@ -279,6 +279,10 @@
   (define-key slime-repl-mode-map
     (read-kbd-macro paredit-backward-delete-key) nil))
 (add-hook 'slime-repl-mode-hook 'override-slime-repl-bindings-with-paredit)
+
+;; Set paredit-splice-sexp to C-c M-s in slime
+(add-hook 'slime-repl-mode-hook
+          (lambda () (local-set-key (kbd "C-c M-s") 'paredit-splice-sexp)))
 
 ;; Set "electric return" for ParEdit
 (defvar electrify-return-match
