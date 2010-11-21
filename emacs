@@ -326,7 +326,9 @@ cursor to the new line."
 (add-hook 'inferior-lisp-mode-hook (lambda () (inferior-slime-mode t)))
 
 (cond ((eq system-type 'darwin) ;; Mac OS Slime setting
-       (setq inferior-lisp-program "/usr/local/bin/sbcl"
+       ;; (setq inferior-lisp-program "~/lisp/bin/ccl/dx86cl"
+       (setenv "SBCL_HOME" (expand-file-name "~/lisp/bin/sbcl/lib/sbcl"))
+       (setq inferior-lisp-program "~/lisp/bin/sbcl/bin/sbcl"
              slime-complete-symbol-function 'slime-fuzzy-complete-symbol
              common-lisp-hyperspec-root "file:///Users/qinaihui/lisp/docs/HyperSpec/"
              slime-startup-animation t))
