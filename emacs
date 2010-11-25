@@ -45,9 +45,6 @@
 (setq indent-tabs-mode nil)
 (setq-default indent-tabs-mode nil)
 
-;; Show trailing spaces
-(setq-default show-trailing-whitespace t)
-
 ;; Set default major mode to Text mode
 (setq default-major-mode 'text-mode)
 
@@ -84,6 +81,9 @@
 (setq display-time-24hr-format t)
 (setq display-time-day-and-date t)
 (display-time)
+
+;; Use y-or-n-p
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Highlight marked block
 (setq transient-mark-mode t)
@@ -354,13 +354,39 @@ cursor to the new line."
 
 (slime-setup '(slime-fancy slime-banner))
 
+
 ;; Slime info path
 (add-to-list 'Info-default-directory-list "~/.emacs.d/slime/doc/")
 
+;; ---------------------- Common Lisp -------------------------
+(setq auto-mode-alist
+      (append '(
+                ("\\.lisp$" . lisp-mode)
+                ("\\.lsp$" . lisp-mode)
+                ("\\.cl$" . lisp-mode)
+                ("\\.asd$" . lisp-mode)
+                ("\\.system$" . lisp-mode))
+              auto-mode-alist))
+
+(add-hook 'lisp-mode-hook
+          (lambda ()
+            (setq show-trailing-whitespace t)))
+
+;; ------------------------ Emacs Lisp ------------------------
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (setq show-trailing-whitespace t)))
+
+;; ------------------- Lisp Interaction Mode ------------------
+(add-hook 'lisp-interaction-mode-hook
+          (lambda ()
+            (setq show-trailing-whitespace t)))
 
 ;; ------------------------- CC-mode --------------------------
 
 (require 'cc-mode)
+(add-hook 'cc-mode (lambda ()
+                     (setq show-trailing-whitespace t)))
 
 
 ;; ----------------------- Objective-C ------------------------
@@ -376,7 +402,8 @@ cursor to the new line."
 (defun my-objc-mode-hook()
   (setq c-basic-offset 4
         tab-width 4
-        indent-tabs-mode nil)
+        indent-tabs-mode nil
+        show-trailing-whitespace t)
   (c-set-style "stroustrup"))
 (add-hook 'objc-mode-hook 'my-objc-mode-hook)
 
@@ -396,11 +423,11 @@ cursor to the new line."
 
 ;; Set My C++ mode
 (defun my-c++-mode-hook()
-  (setq c-basic-offset 4            ; Set tab indent
+  (setq c-basic-offset 4
         tab-width 4
-        indent-tabs-mode nil)       ; Use spaces instead of tabs
-  (c-set-style "stroustrup")        ; Set C++ style
-                                        ; Bind F7 with compile function
+        indent-tabs-mode nil
+        show-trailing-whitespace t)
+  (c-set-style "stroustrup")
   (define-key c++-mode-map [f7] 'compile))
 
 ;; Hook my C++ mode to c++-mode
