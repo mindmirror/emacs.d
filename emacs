@@ -45,6 +45,9 @@
 (setq indent-tabs-mode nil)
 (setq-default indent-tabs-mode nil)
 
+;; Show trailing spaces
+(setq-default show-trailing-whitespace t)
+
 ;; Set default major mode to Text mode
 (setq default-major-mode 'text-mode)
 
@@ -182,11 +185,16 @@
 (if (eq system-type 'windows-nt)
     (set-clipboard-coding-system 'utf-16le-dos))
 
-;; Bind F9 with font-lock-mode function
-(global-set-key [(f9)] 'font-lock-mode)
 
 ;; Bind F10 with Menu function
-(global-set-key [(f10)] 'menu-bar-mode)
+(global-set-key [f9] 'menu-bar-mode)
+
+;; Set highlight-symbol
+(add-to-list 'load-path "~/.emacs.d/elpa/highlight-symbol-1.1")
+(require 'highlight-symbol)
+(global-set-key [f10] 'highlight-symbol-at-point)
+(global-set-key [f11] 'highlight-symbol-next)
+(global-set-key [f12] 'highlight-symbol-prev)
 
 ;; Let dired copy and delete directories recursively
 (setq dired-recursive-copies 'top)
