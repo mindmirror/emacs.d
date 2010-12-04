@@ -30,8 +30,8 @@
 /xref.lisp/1.2/Mon May 17 00:25:24 2004//
 D/contrib////
 D/doc////
-/ChangeLog/1.2165/Sun Nov 14 12:37:54 2010//
 /slime.el/1.1350/Sun Nov 14 12:37:54 2010//
 /swank-backend.lisp/1.205/Sun Nov 14 12:37:54 2010//
-/swank-lispworks.lisp/1.140/Sun Nov 14 12:37:54 2010//
 /swank-loader.lisp/1.110/Sun Nov 14 12:37:54 2010//
+/ChangeLog/1.2166/Sat Dec  4 10:54:41 2010//
+/swank-lispworks.lisp/1.141/Sat Dec  4 10:54:41 2010//
