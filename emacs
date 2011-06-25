@@ -2,6 +2,9 @@
 
 ;; .emacs - an emacs initialization file created by MindMirror
 
+;; Start server
+(server-start)
+
 ;; Load package manager ELPA
 (add-to-list 'load-path "~/.emacs.d/elpa")
 (load "package")
@@ -65,6 +68,7 @@
 
 ;; Turn tool bar off
 (tool-bar-mode -1)
+
 ;; Turn menu bar off
 (if (not (eq system-type 'darwin))
     (menu-bar-mode -1))
@@ -215,7 +219,8 @@
         (background-color . "Black")
         (cursor-color     . "DeepSkyBlue")
         (width            . 120)
-        (height           . 82)))
+        (height           . 82)
+        (font             . "-apple-consolas-medium-r-normal--14-*-*-*-m-*-iso10646-1")))
 
 ;; Darth Vada style mode line
 (custom-set-faces
@@ -266,6 +271,14 @@
         try-complete-file-name-partially
         try-complete-file-name
         try-expand-whole-kill))
+
+;; Customized variables
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(vc-follow-symlinks t))
 
 
 ;; Programming
