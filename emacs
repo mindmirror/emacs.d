@@ -374,7 +374,7 @@ cursor to the new line."
 
 
 ;; Slime info path
-(add-to-list 'Info-default-directory-list "~/.emacs.d/slime/doc/")
+;(add-to-list 'Info-default-directory-list "~/.emacs.d/slime/doc/")
 
 ;; ---------------------- Common Lisp -------------------------
 (setq auto-mode-alist
