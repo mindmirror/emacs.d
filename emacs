@@ -192,7 +192,6 @@
 (if (eq system-type 'windows-nt)
     (set-clipboard-coding-system 'utf-16le-dos))
 
-
 ;; Bind F10 with Menu function
 (global-set-key [f9] 'menu-bar-mode)
 
