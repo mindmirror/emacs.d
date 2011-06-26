@@ -36,6 +36,9 @@
 ;; Turn off the splash
 (setq inhibit-startup-message t)
 
+;; Set fill-column
+(setq-default fill-column 72)
+
 ;; Set scroll margin
 (setq scroll-margin 8
       scroll-conservatively 8192)
@@ -280,6 +283,9 @@
   ;; If there is more than one, they won't work right.
  '(vc-follow-symlinks t))
 
+;; git-commit-mode
+(add-to-list 'load-path "~/.emacs.d/site-lisp/git-commit-mode/")
+(require 'git-commit)
 
 ;; Programming
 ;; ============================================================
@@ -335,37 +341,37 @@ cursor to the new line."
 
 ;; -------------------------- Slime ---------------------------
 
-(add-to-list 'load-path "~/.emacs.d/slime/")
-(cond ((eq system-type 'darwin)
-       (load (expand-file-name "~/lisp/quicklisp/slime-helper.el")))
-      ((eq system-type 'windows-nt)
-       (load (expand-file-name "/lisp/quicklisp/slime-helper.el")))
-      (t (load (expand-file-name "~/lisp/quicklisp/slime-helper.el"))))
-(require 'slime-autoloads)
+;; (add-to-list 'load-path "~/.emacs.d/slime/")
+;; (cond ((eq system-type 'darwin)
+;;        (load (expand-file-name "~/lisp/quicklisp/slime-helper.el")))
+;;       ((eq system-type 'windows-nt)
+;;        (load (expand-file-name "/lisp/quicklisp/slime-helper.el")))
+;;       (t (load (expand-file-name "~/lisp/quicklisp/slime-helper.el"))))
+;; (require 'slime-autoloads)
 
-(add-hook 'lisp-mode-hook (lambda () (slime-mode t)))
-(add-hook 'inferior-lisp-mode-hook (lambda () (inferior-slime-mode t)))
+;; (add-hook 'lisp-mode-hook (lambda () (slime-mode t)))
+;; (add-hook 'inferior-lisp-mode-hook (lambda () (inferior-slime-mode t)))
 
-(cond ((eq system-type 'darwin) ;; Mac OS Slime setting
-       ;; (setq inferior-lisp-program "~/lisp/bin/ccl/dx86cl"
-       (setenv "SBCL_HOME" (expand-file-name "~/lisp/bin/sbcl/lib/sbcl"))
-       (setq inferior-lisp-program "~/lisp/bin/sbcl/bin/sbcl"
-             slime-complete-symbol-function 'slime-fuzzy-complete-symbol
-             common-lisp-hyperspec-root "file:///Users/qinaihui/lisp/docs/HyperSpec/"
-             slime-startup-animation t))
-      ((eq system-type 'windows-nt) ;; Windows Slime setting
-       ;;(setq inferior-lisp-program "C:/Lisp/lwp51/lispworks-personal-5-1-1-x86-win32.exe"
-       ;;(setq inferior-lisp-program "C:/Lisp/lwp60/lispworks-personal-6-0-1-x86-win32.exe"
-       ;;(setq inferior-lisp-program "C:/Lisp/sbcl/1037/sbcl.exe"
-       (setq inferior-lisp-program "C:/Lisp/ccl/wx86cl.exe"
-             slime-complete-symbol-function 'slime-complete-symbol-function
-             common-lisp-hyperspec-root "file:///C:/Lisp/docs/HyperSpec/"))
-      (t (setq inferior-lisp-program "/usr/local/bin/sbcl" ;; Other system
-               slime-complete-symbol-function 'slime-fuzzy-complete-symbol
-               common-lisp-hyperspec-root "~/lisp/docs/HyperSpec/"
-               slime-startup-animation t)))
+;; (cond ((eq system-type 'darwin) ;; Mac OS Slime setting
+;;        ;; (setq inferior-lisp-program "~/lisp/bin/ccl/dx86cl"
+;;        (setenv "SBCL_HOME" (expand-file-name "~/lisp/bin/sbcl/lib/sbcl"))
+;;        (setq inferior-lisp-program "~/lisp/bin/sbcl/bin/sbcl"
+;;              slime-complete-symbol-function 'slime-fuzzy-complete-symbol
+;;              common-lisp-hyperspec-root "file:///Users/qinaihui/lisp/docs/HyperSpec/"
+;;              slime-startup-animation t))
+;;       ((eq system-type 'windows-nt) ;; Windows Slime setting
+;;        ;;(setq inferior-lisp-program "C:/Lisp/lwp51/lispworks-personal-5-1-1-x86-win32.exe"
+;;        ;;(setq inferior-lisp-program "C:/Lisp/lwp60/lispworks-personal-6-0-1-x86-win32.exe"
+;;        ;;(setq inferior-lisp-program "C:/Lisp/sbcl/1037/sbcl.exe"
+;;        (setq inferior-lisp-program "C:/Lisp/ccl/wx86cl.exe"
+;;              slime-complete-symbol-function 'slime-complete-symbol-function
+;;              common-lisp-hyperspec-root "file:///C:/Lisp/docs/HyperSpec/"))
+;;       (t (setq inferior-lisp-program "/usr/local/bin/sbcl" ;; Other system
+;;                slime-complete-symbol-function 'slime-fuzzy-complete-symbol
+;;                common-lisp-hyperspec-root "~/lisp/docs/HyperSpec/"
+;;                slime-startup-animation t)))
 
-(slime-setup '(slime-fancy slime-banner))
+;; (slime-setup '(slime-fancy slime-banner))
 
 
 ;; Slime info path
