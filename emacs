@@ -36,6 +36,9 @@
 ;; Turn off the splash
 (setq inhibit-startup-message t)
 
+;; Set fill-column
+(setq-default fill-column 72)
+
 ;; Set scroll margin
 (setq scroll-margin 8
       scroll-conservatively 8192)
@@ -279,6 +282,10 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(vc-follow-symlinks t))
+
+;; git-commit mode
+(add-to-list 'load-path "~/.emacs.d/site-lisp/git-commit-mode/")
+(require 'git-commit)
 
 
 ;; Programming
